@@ -1,7 +1,10 @@
 'use strict'
 
     angular
-        .module('Eggly', [])
+        .module('eggly', [
+            'categories',
+            'books'
+        ])
         .controller('MainCtrl', function($scope) {
             $scope.books = [
                 {"id":0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
