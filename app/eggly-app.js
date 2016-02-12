@@ -6,43 +6,25 @@
             'categories',
             'books'
         ])
-        /*.config(function($stateProvider) {
-            $stateProvider.state('eggly', {
-                url: '/',
-                templateUrl: 'app/categories/categories.tmpl.html',
-                controller: 'MainCtrl'
-            })
-        })*/
-        .config(function ($stateProvider) {
+        .config(function ($stateProvider, $urlRouterProvider) {
             $stateProvider
                 .state('eggly', {
-                    url: '/', // Make to navigate to index.html#/
-                    templateUrl: 'app/categories/categories.tmpl.html',
-                    controller: 'MainCtrl'
+                    url: '',
+                    abstract: true
                 })
-            ;
-        })
-        .controller('MainCtrl', function($scope) {
-            $scope.books = [
-                {"id":0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
-                {"id":1, "title": "Egghead.io", "url": "http://angularjs.org", "category": "Development" },
-                {"id":2, "title": "A List Apart", "url": "http://alistapart.com/", "category": "Design" },
-                {"id":3, "title": "One Page Love", "url": "http://onepagelove.com/", "category": "Design" },
-                {"id":4, "title": "MobilityWOD", "url": "http://www.mobilitywod.com/", "category": "Exercise" },
-                {"id":5, "title": "Robb Wolf", "url": "http://robbwolf.com/", "category": "Exercise" },
-                {"id":6, "title": "Senor Gif", "url": "http://memebase.cheezburger.com/senorgif", "category": "Humor" },
-                {"id":7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
-                {"id":8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
-            ];
-            $scope.categories = [
-                {"id": 0, "name": "Development"},
-                {"id": 1, "name": "Design"},
-                {"id": 2, "name": "Exercise"},
-                {"id": 3, "name": "Humor"}
-            ];
 
+            $urlRouterProvider.otherwise('/');
+        })
+        .controller('MainCtrl', function($scope, $state) {
             function setCurrentCategory(category) {
+                //$state.go('eggly.books', {category: category.name});
                 $scope.currentCategory = category;
+                $scope.categories = [
+                    {"id": 0, "name": "Development"},
+                    {"id": 1, "name": "Design"},
+                    {"id": 2, "name": "Exercise"},
+                    {"id": 3, "name": "Humor"}
+                ];
                 cancelEditingCategory();
                 cancelCreatingCategory();
             }
