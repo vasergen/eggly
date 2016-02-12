@@ -1,10 +1,27 @@
 'use strict'
 
     angular
-        .module('eggly', [
+        .module('Eggly', [
+            'ui.router',
             'categories',
             'books'
         ])
+        /*.config(function($stateProvider) {
+            $stateProvider.state('eggly', {
+                url: '/',
+                templateUrl: 'app/categories/categories.tmpl.html',
+                controller: 'MainCtrl'
+            })
+        })*/
+        .config(function ($stateProvider) {
+            $stateProvider
+                .state('eggly', {
+                    url: '/', // Make to navigate to index.html#/
+                    templateUrl: 'app/categories/categories.tmpl.html',
+                    controller: 'MainCtrl'
+                })
+            ;
+        })
         .controller('MainCtrl', function($scope) {
             $scope.books = [
                 {"id":0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },

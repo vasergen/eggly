@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="eggly">
+<html ng-app="Eggly">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -11,75 +11,18 @@
         <link rel="stylesheet" href="assets/css/eggly.css">
         <link rel="stylesheet" href="assets/css/animations.css">
     </head>
-    <body ng-controller="MainCtrl">
-        <div class="container-fluid">
-            <div class="row">
-                <!--Sidebar-->
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <a href="#" ng-click="setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
-                    <ul class="nav nav-sidebar">
-                        <li ng-repeat="category in categories" ng-class="{'active': isCurrentCategory(category)}" ng-click="setCurrentCategory(category)">
-                            <a href="#">{{category.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!--Books-->
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-repeat="book in books | filter:{category:currentCategory.name}">
-                        <button ng-click="deleteBook(book)" type="button" class="close">&times;</button>
-                        <button ng-click="startEditingCategory(); setCurrentBook(book);" type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <a href={{book.url}} target="_blank">{{book.title}}</a>
-                    </div>
-                    <hr/>
-
-                    <div class="panels">
-                        <!--Add Category-->
-                        <div class="row" ng-if="currentCategory">
-                            <div class="col col-xs-12">
-                                <input ng-click="startCreatingCategory(); setCurrentBook(null);" type="button" class="btn btn-lg btn-warning" value="Add Category"/>
-                            </div>
-                        </div>
-
-                        <!--Create Category-->
-                        <form action="" role="form" ng-if="isCreating">
-                            <h3>Add Category</h3>
-                            <div class="form-group">
-                                <label class="" for="create-title">Title:</label>
-                                <input ng-model="newBook.title" class="form-control" type="text" id="create-title" placeholder="Title"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="create-url">URL:</label>
-                                <input ng-model="newBook.url" type="text" class="form-control" id="create-url" placeholder="URL"/>
-                            </div>
-                            <button ng-click="addBook()" type="submit" class="btn btn-sm btn-default">Save</button>
-                            <input ng-click="cancelCreatingCategory()" type="button"  class="btn btn-default btn-sm" value="Cancel"/>
-                        </form>
-
-                        <!--Edit Category-->
-                        <form action="" role="form" ng-if="isEditing">
-                            <h3>Edit Category</h3>
-                            <div class="form-group">
-                                <label for="edit-title">Title:</label>
-                                <input ng-model="currentBook.title" class="form-control" type="text" id="edit-title" placeholder="Title"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-url">URL:</label>
-                                <input ng-model="currentBook.url" type="text" id="edit-url" class="form-control" placeholder="URL"/>
-                            </div>
-                            <button ng-click="saveCurrentBook()" type="submit" class="btn btn-sm btn-default">Save</button>
-                            <input ng-click="cancelEditingCategory()" type="button"  class="btn btn-default btn-sm" value="Cancel"/>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+    <body ng-controller="MainCtrl as main">
+        <!--<div class="container-fluid" ui-view>Hi</div>-->
+        <div class="container-fluid" ui-view>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+
+        <!--UI router-->
+        <script src="vendor/angular-ui-router.min.js"></script>
 
         <!--Our APP-->
         <script src="app/eggly-app.js"></script>
