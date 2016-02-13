@@ -10,16 +10,12 @@ angular
     ])
     .config(function($stateProvider) {
         $stateProvider
-            .state('eggly.books', {
-                url: '/cat/:category',
+            .state('eggly.categories.books', {
+                url: 'category/:category',
                 views: {
                     'books@': {
                         templateUrl: 'app/books/books.tmpl.html',
                         controller: 'BooksCtrl as booksListController'
-                    },
-                    'categories@': {
-                        controller: 'CategoriesCtrl as categoriesCtrl',
-                        templateUrl: 'app/categories/categories.tmpl.html'
                     }
                 }
             })

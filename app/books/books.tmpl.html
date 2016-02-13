@@ -1,8 +1,18 @@
 <h2>{{booksListController.currentCategoryName}}</h2>
 
 <div ng-repeat="book in booksListController.books | filter:{category:currentCategory.name}">
-    <button ng-click="deleteBook(book)" type="button" class="close">&times;</button>
-    <button ng-click="startEditingCategory(); setCurrentBook(book);" type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+    <button
+            ng-click="deleteBook(book)"
+            type="button"
+            class="close">
+        &times;
+    </button>
+    <button
+            ng-click="startEditingCategory(); setCurrentBook(book);"
+            type="button"
+            class="btn btn-link">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </button>
     <a href={{book.url}} target="_blank">{{book.title}}</a>
 </div>
 <hr/>
@@ -11,7 +21,11 @@
     <!--Add Category-->
     <div class="row" ng-if="currentCategory">
         <div class="col col-xs-12">
-            <input ng-click="startCreatingCategory(); setCurrentBook(null);" type="button" class="btn btn-lg btn-warning" value="Add Category"/>
+            <input
+                    ng-click="startCreatingCategory(); setCurrentBook(null);"
+                    type="button"
+                    class="btn btn-lg btn-warning"
+                    value="Add Category"/>
         </div>
     </div>
 

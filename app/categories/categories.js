@@ -9,7 +9,7 @@ angular
     ])
     .config(function($stateProvider) {
         $stateProvider
-            .state('eggly-categories', {
+            .state('eggly.categories', {
                 url: '/',
                 views: {
                     'books@': {
