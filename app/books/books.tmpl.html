@@ -1,8 +1,8 @@
-<h2>{{booksListController.currentCategoryName}}</h2>
+<h2>{{booksListController.getCurrentCategoryName()}}</h2>
 
 <div ng-repeat="book in booksListController.books | filter:{category:booksListController.getCurrentCategoryName()}">
     <button
-            ng-click="deleteBook(book)"
+            ng-click="booksListController.deleteBook(book)"
             type="button"
             class="close">
         &times;
@@ -17,14 +17,12 @@
 </div>
 <hr/>
 
-<ui-view ng-if="booksCtrl.getCurrentCategory()" class="panels" >
-    <div class="row" ng-if="currentCategory">
+<ui-view ng-if="booksListController.getCurrentCategory()" class="panels" >
         <div class="col col-xs-12">
             <input
-                    ui-sref="eggly.categories.books.create"
-                    type="button"
-                    class="btn btn-lg btn-warning"
-                    value="Add Category"/>
+                ui-sref="eggly.categories.books.create"
+                type="button"
+                class="btn btn-lg btn-warning"
+                value="Add Category"/>
         </div>
-    </div>
 </ui-view>

@@ -31,4 +31,5 @@ angular
 
         booksCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory;
         booksCtrl.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
+        booksCtrl.deleteBook = BooksModel.deleteBook;
     })

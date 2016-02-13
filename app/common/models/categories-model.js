@@ -52,6 +52,7 @@ angular.module('eggly.models.categories', [])
         }
 
         model.getCurrentCategory = function() {
+            console.log('getCurrentCategory', currentCategory);
             return currentCategory;
         }
 
