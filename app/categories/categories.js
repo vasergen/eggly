@@ -25,5 +25,10 @@ angular
     })
     .controller('CategoriesCtrl', function(CategoriesModel) {
         var CategoriesCtrl = this;
-        CategoriesCtrl.categories = CategoriesModel.getCategories()
+
+        CategoriesModel
+            .getCategories()
+            .then(function(result) {
+                CategoriesCtrl.categories = result;
+            })
     })

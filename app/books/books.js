@@ -27,5 +27,7 @@ angular
     .controller('BooksCtrl', function($stateParams, BooksModel) {
         var booksCtrl = this;
         booksCtrl.currentCategoryName = $stateParams.category
-        booksCtrl.books = BooksModel.getBooks()
+        BooksModel.getBooks().then(function(result) {
+            booksCtrl.books = result;
+        })
     })

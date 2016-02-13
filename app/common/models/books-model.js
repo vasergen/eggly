@@ -3,20 +3,17 @@
 angular.module('eggly.models.books', [
 
 ])
-.service('BooksModel', function() {
+.service('BooksModel', function($http) {
     var model = this;
-    var books = [
-            {"id":0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
-            {"id":1, "title": "Egghead.io", "url": "http://angularjs.org", "category": "Development" },
-            {"id":2, "title": "A List Apart", "url": "http://alistapart.com/", "category": "Design" },
-            {"id":3, "title": "One Page Love", "url": "http://onepagelove.com/", "category": "Design" },
-            {"id":4, "title": "MobilityWOD", "url": "http://www.mobilitywod.com/", "category": "Exercise" },
-            {"id":5, "title": "Robb Wolf", "url": "http://robbwolf.com/", "category": "Exercise" },
-            {"id":6, "title": "Senor Gif", "url": "http://memebase.cheezburger.com/senorgif", "category": "Humor" },
-            {"id":7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
-            {"id":8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
-        ];
+    var URLS = {
+        FETCH: 'data/bookmarks.json'
+    }
+
+    function extract(result) {
+        return result.data;
+    }
+
     model.getBooks = function() {
-        return books;
+        return $http.get(URLS.FETCH).then(extract);
     }
 });
