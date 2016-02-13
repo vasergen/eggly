@@ -2,9 +2,6 @@
 
 angular
     .module('categories', [
-        'book.create',
-        'book.edit',
-        'book.delete',
         'eggly.models.categories'
     ])
     .config(function($stateProvider) {
@@ -13,7 +10,7 @@ angular
                 url: '/',
                 views: {
                     'books@': {
-                        controller: 'BooksCtrl',
+                        controller: 'BooksCtrl as booksListController',
                         templateUrl: 'app/books/books.tmpl.html'
                     },
                     'categories@': {

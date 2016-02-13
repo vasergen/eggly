@@ -11,7 +11,7 @@ angular
     .config(function($stateProvider) {
         $stateProvider
             .state('eggly.categories.books', {
-                url: 'category/:category',
+                url: 'category/:category/',
                 views: {
                     'books@': {
                         templateUrl: 'app/books/books.tmpl.html',
@@ -20,10 +20,15 @@ angular
                 }
             })
     })
-    .controller('BooksCtrl', function($stateParams, BooksModel) {
+    .controller('BooksCtrl', function($stateParams, BooksModel, CategoriesModel) {
         var booksCtrl = this;
-        booksCtrl.currentCategoryName = $stateParams.category
-        BooksModel.getBooks().then(function(result) {
-            booksCtrl.books = result;
+
+        CategoriesModel.setCurrentCategory($stateParams.category)
+
+        BooksModel.getBooks().then(function(books) {
+            booksCtrl.books = books;
         })
+
+        booksCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory;
+        booksCtrl.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
     })

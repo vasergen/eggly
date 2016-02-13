@@ -1,6 +1,6 @@
 <h2>{{booksListController.currentCategoryName}}</h2>
 
-<div ng-repeat="book in booksListController.books | filter:{category:currentCategory.name}">
+<div ng-repeat="book in booksListController.books | filter:{category:booksListController.getCurrentCategoryName()}">
     <button
             ng-click="deleteBook(book)"
             type="button"
@@ -8,7 +8,7 @@
         &times;
     </button>
     <button
-            ng-click="startEditingCategory(); setCurrentBook(book);"
+            ui-sref="eggly.categories.books.edit({bookId: book.id})"
             type="button"
             class="btn btn-link">
         <span class="glyphicon glyphicon-pencil"></span>
@@ -17,45 +17,14 @@
 </div>
 <hr/>
 
-<div class="panels">
-    <!--Add Category-->
+<ui-view ng-if="booksCtrl.getCurrentCategory()" class="panels" >
     <div class="row" ng-if="currentCategory">
         <div class="col col-xs-12">
             <input
-                    ng-click="startCreatingCategory(); setCurrentBook(null);"
+                    ui-sref="eggly.categories.books.create"
                     type="button"
                     class="btn btn-lg btn-warning"
                     value="Add Category"/>
         </div>
     </div>
-
-    <!--Create Category-->
-    <form action="" role="form" ng-if="isCreating">
-        <h3>Add Category</h3>
-        <div class="form-group">
-            <label class="" for="create-title">Title:</label>
-            <input ng-model="newBook.title" class="form-control" type="text" id="create-title" placeholder="Title"/>
-        </div>
-        <div class="form-group">
-            <label for="create-url">URL:</label>
-            <input ng-model="newBook.url" type="text" class="form-control" id="create-url" placeholder="URL"/>
-        </div>
-        <button ng-click="addBook()" type="submit" class="btn btn-sm btn-default">Save</button>
-        <input ng-click="cancelCreatingCategory()" type="button"  class="btn btn-default btn-sm" value="Cancel"/>
-    </form>
-
-    <!--Edit Category-->
-    <form action="" role="form" ng-if="isEditing">
-        <h3>Edit Category</h3>
-        <div class="form-group">
-            <label for="edit-title">Title:</label>
-            <input ng-model="currentBook.title" class="form-control" type="text" id="edit-title" placeholder="Title"/>
-        </div>
-        <div class="form-group">
-            <label for="edit-url">URL:</label>
-            <input ng-model="currentBook.url" type="text" id="edit-url" class="form-control" placeholder="URL"/>
-        </div>
-        <button ng-click="saveCurrentBook()" type="submit" class="btn btn-sm btn-default">Save</button>
-        <input ng-click="cancelEditingCategory()" type="button"  class="btn btn-default btn-sm" value="Cancel"/>
-    </form>
-</div>
+</ui-view>

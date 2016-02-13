@@ -1,11 +1,12 @@
-<a href="#" ng-click="setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
+<a href="#" ui-sref="eggly.categories">
+    <img class="logo" src="assets/img/eggly-logo.png">
+</a>
 <ul class="nav nav-sidebar">
     <li
         ui-sref="eggly.categories.books({category: category.name})"
         ng-repeat="category in categoriesCtrl.categories"
         ng-class="{'active': isCurrentCategory(category)}"
-        ng-click="setCurrentCategory(category)"
-    >
+        ng-click="setCurrentCategory(category)">
         <a href="#">{{category.name}}</a>
     </li>
 </ul>

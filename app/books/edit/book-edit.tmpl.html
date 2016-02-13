@@ -1,0 +1,14 @@
+BookEdit
+<form action="" role="form">
+    <h3>Edit Category</h3>
+    <div class="form-group">
+        <label for="edit-title">Title:</label>
+        <input ng-model="currentBook.title" class="form-control" type="text" id="edit-title" placeholder="Title"/>
+    </div>
+    <div class="form-group">
+        <label for="edit-url">URL:</label>
+        <input ng-model="currentBook.url" type="text" id="edit-url" class="form-control" placeholder="URL"/>
+    </div>
+    <button ng-click="saveCurrentBook()" type="submit" class="btn btn-sm btn-default">Save</button>
+    <input ng-click="cancelEditingCategory()" type="button"  class="btn btn-default btn-sm" value="Cancel"/>
+</form>
