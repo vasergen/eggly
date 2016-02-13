@@ -2,6 +2,7 @@
 
     angular
         .module('Eggly', [
+            'ngAnimate',
             'ui.router',
             'categories',
             'books'
